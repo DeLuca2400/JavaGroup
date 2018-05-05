@@ -51,14 +51,18 @@ public class Plane extends Actor
     
     public void popBalloon()
     {
-        if (isTouching(redBalloon.class))
+        RedBalloon red = (RedBalloon) getOneIntersectingObject(RedBalloon.class);
+        if (red != null && red.percentChange > 1)
         {
-            removeTouching(redBalloon.class);
+            getWorld().removeObject(red);
         }
         
-        if ( isTouching(yellowBalloon.class))
+        YellowBalloon yellow = (YellowBalloon) getOneIntersectingObject(YellowBalloon.class);
+        if (yellow != null && yellow.percentChange > 1)
         {
-            removeTouching(yellowBalloon.class);
+            getWorld().removeObject(yellow);
         }
+
+
     }
 }

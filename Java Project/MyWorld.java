@@ -22,7 +22,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        setPaintOrder(Plane.class, balloon.class);
+        setPaintOrder(Plane.class, Balloon.class);
         checkForSpawning();
         Greenfoot.setSpeed(scenarioSpeed);
         prepare();
@@ -31,16 +31,16 @@ public class MyWorld extends World
     public void checkForSpawning() 
     {
         spawnTimer = spawnTimer+1; 
-        int balloonCount = getObjects(balloon.class).size();
-        if ((spawnTimer%20 == 0 || balloonCount == 0 && balloonCount < maxNumberBalloons))
+        int balloonCount = getObjects(Balloon.class).size();
+        if ((spawnTimer%20 == 0 || balloonCount == 0) && (balloonCount < maxNumberBalloons))
         {
             if (spawnTimer%50 == 0)
             {
-                addObject(new yellowBalloon(),300,200);
+                addObject(new YellowBalloon(),300,200);
             }
             else
             {
-                addObject(new redBalloon(),300,200);
+                addObject(new RedBalloon(),300,200);
             }
         }
 
